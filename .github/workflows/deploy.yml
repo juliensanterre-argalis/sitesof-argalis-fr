@@ -1,0 +1,35 @@
+name: Deploy to server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Inject Mailgun API key
+        run: |
+          sed -i "s|VOTRE_CLE_API_MAILGUN|${{ secrets.MAILGUN_API_KEY }}|g" source/send-email.php
+
+      - name: Deploy via SFTP
+        run: |
+          sudo apt-get install -y sshpass
+          sshpass -p "${{ secrets.SFTP_PASSWORD }}" sftp \
+            -o StrictHostKeyChecking=no \
+            -o Port=${{ secrets.SFTP_PORT }} \
+            ${{ secrets.SFTP_USER }}@${{ secrets.SFTP_HOST }} << EOF
+            put source/index.html ${{ secrets.SFTP_PATH }}/source/index.html
+            put source/script.js ${{ secrets.SFTP_PATH }}/source/script.js
+            put source/style.css ${{ secrets.SFTP_PATH }}/source/style.css
+            put source/filters-functions.js ${{ secrets.SFTP_PATH }}/source/filters-functions.js
+            put source/range-slider.js ${{ secrets.SFTP_PATH }}/source/range-slider.js
+            put source/fictive-data.js ${{ secrets.SFTP_PATH }}/source/fictive-data.js
+            put source/send-email.php ${{ secrets.SFTP_PATH }}/source/send-email.php
+            put dummy/index.html ${{ secrets.SFTP_PATH }}/dummy/index.html
+          EOF
