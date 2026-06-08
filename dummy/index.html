@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogue de Formations</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Popper.js pour le positionnement des menus -->
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  
+  <!-- Leaflet.js pour les cartes -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <!-- Flatpickr pour le date picker -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
+  
+  <!-- Configuration Tailwind -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            border: "hsl(var(--border))",
+            input: "hsl(var(--input))",
+            ring: "hsl(var(--ring))",
+            background: "hsl(var(--background))",
+            foreground: "hsl(var(--foreground))",
+            primary: {
+              DEFAULT: "hsl(var(--primary))",
+              foreground: "hsl(var(--primary-foreground))",
+            },
+            secondary: {
+              DEFAULT: "hsl(var(--secondary))",
+              foreground: "hsl(var(--secondary-foreground))",
+            },
+            destructive: {
+              DEFAULT: "hsl(var(--destructive))",
+              foreground: "hsl(var(--destructive-foreground))",
+            },
+            muted: {
+              DEFAULT: "hsl(var(--muted))",
+              foreground: "hsl(var(--muted-foreground))",
+            },
+            accent: {
+              DEFAULT: "hsl(var(--accent))",
+              foreground: "hsl(var(--accent-foreground))",
+            },
+            popover: {
+              DEFAULT: "hsl(var(--popover))",
+              foreground: "hsl(var(--popover-foreground))",
+            },
+            card: {
+              DEFAULT: "hsl(var(--card))",
+              foreground: "hsl(var(--card-foreground))",
+            },
+          },
+          borderRadius: {
+            lg: "var(--radius)",
+            md: "calc(var(--radius) - 2px)",
+            sm: "calc(var(--radius) - 4px)",
+          },
+        },
+      },
+    }
+  </script>
+  
+  <!-- Styles personnalisés -->
+  <link rel="stylesheet" href="../../source/style.css?v=4">
+</head>
+<body class="min-h-screen bg-background">
+  <!-- Header -->
+  <header id="header" class="border-b bg-card"></header>
+  
+  <!-- Bandeau de démo (affiché uniquement si moduladmin = false) -->
+  <div id="demo-banner" style="display: none;"></div>
+  
+  <!-- Main Content -->
+  <main>
+    <!-- Vue Catalogue -->
+    <div id="catalogue-view"></div>
+    
+    <!-- Vue Fiche Produit -->
+    <div id="produit-view" class="hidden"></div>
+    
+    <!-- Vue Calendrier Sessions -->
+    <div id="calendrier-view" class="hidden"></div>
+    
+    <!-- Vue Détail Session -->
+    <div id="session-detail-view" class="hidden"></div>
+  </main>
+  
+  <!-- Footer -->
+  <footer id="footer" class="border-t bg-card mt-16"></footer>
+  
+  <!-- Scripts -->
+  <script src="../../source/filters-functions.js"></script>
+  <script src="../../source/range-slider.js"></script>
+  <script src="../../source/fictive-data.js"></script>
+  <script src="../../source/script.js"></script>
+</body>
+</html>

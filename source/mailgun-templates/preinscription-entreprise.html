@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Préinscription - Entreprise</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f3f4f6;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 40px 20px;">
+                <table role="presentation" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: {{primary_color}}; padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
+                            <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600;">
+                                <svg style="width: 28px; height: 28px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg> Nouvelle Préinscription
+                            </h1>
+                            <p style="margin: 10px 0 0 0; color: #ffffff; font-size: 14px;">
+                                Entreprise
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Référence de la demande -->
+                    <tr>
+                        <td style="padding: 20px 30px 0 30px;">
+                            <div style="background-color: #F3F4F6; border: 1px solid {{primary_color}}; padding: 12px 20px; border-radius: 6px; text-align: center;">
+                                <p style="margin: 0; color: #6B7280; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Référence de la demande</p>
+                                <p style="margin: 4px 0 0 0; color: {{primary_dark}}; font-size: 18px; font-weight: 700; font-family: 'Courier New', monospace;">{{demande_reference}}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Formation et Session -->
+                    <tr>
+                        <td style="padding: 30px;">
+                            <div style="background-color: {{primary_light}}; border-left: 4px solid {{primary_color}}; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
+                                <h2 style="margin: 0 0 8px 0; color: {{primary_dark}}; font-size: 18px; font-weight: 600;">
+                                    Formation
+                                </h2>
+                                <p style="margin: 0; color: {{primary_color}}; font-size: 16px; font-weight: 500;">
+                                    {{formation}}
+                                </p>
+                                <p style="margin: 8px 0 0 0; color: #6B7280; font-size: 14px;">
+                                    Référence : {{product_reference}}
+                                </p>
+                            </div>
+                            
+                            <!-- Informations Session -->
+                            <div style="background-color: {{primary_light}}; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                                    <h3 style="margin: 0; color: {{primary_dark}}; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px; flex: 1;">
+                                        <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                        </svg>
+                                        Session sélectionnée
+                                    </h3>
+                                    <div style="background-color: {{primary_color}}; color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; white-space: nowrap;">
+                                        {{session_reference}}
+                                    </div>
+                                </div>
+                                <table role="presentation" style="width: 100%; border-collapse: collapse;">
+                                    <tr>
+                                        <td style="padding: 6px 0; color: {{primary_dark}}; font-size: 14px; width: 80px; vertical-align: top;">
+                                            <strong style="display: flex; align-items: center; gap: 6px;">
+                                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                                </svg>
+                                                Date :
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 6px 0; color: {{primary_dark}}; font-size: 14px; font-weight: 500;">
+                                            {{session_date}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 6px 0; color: {{primary_dark}}; font-size: 14px; vertical-align: top;">
+                                            <strong style="display: flex; align-items: center; gap: 6px;">
+                                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                </svg>
+                                                Lieu :
+                                            </strong>
+                                        </td>
+                                        <td style="padding: 6px 0; color: {{primary_dark}}; font-size: 14px;">
+                                            {{session_lieu}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            
+                            <!-- Informations entreprise -->
+                            <h3 style="margin: 0 0 15px 0; color: #1F2937; font-size: 16px; font-weight: 600; border-bottom: 2px solid #E5E7EB; padding-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                                <svg style="width: 20px; height: 20px;" fill="none" stroke="{{primary_color}}" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                                Informations entreprise
+                            </h3>
+                            
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
+                                <tr>
+                                    <td style="padding: 8px 0; color: #6B7280; font-size: 14px; width: 140px;">
+                                        <strong>Entreprise :</strong>
+                                    </td>
+                                    <td style="padding: 8px 0; color: #1F2937; font-size: 14px; font-weight: 600;">
+                                        {{company_name}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px 0; color: #6B7280; font-size: 14px;">
+                                        <strong>SIRET :</strong>
+                                    </td>
+                                    <td style="padding: 8px 0; color: #1F2937; font-size: 14px;">
+                                        {{siret}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px 0; color: #6B7280; font-size: 14px; vertical-align: top;">
+                                        <strong>Adresse :</strong>
+                                    </td>
+                                    <td style="padding: 8px 0; color: #1F2937; font-size: 14px;">
+                                        {{address}}
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Contact -->
+                            <h3 style="margin: 0 0 15px 0; color: #1F2937; font-size: 16px; font-weight: 600; border-bottom: 2px solid #E5E7EB; padding-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                                <svg style="width: 20px; height: 20px;" fill="none" stroke="{{primary_color}}" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                </svg>
+                                Personne de contact
+                            </h3>
+                            
+                            <table role="presentation" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                                <tr>
+                                    <td style="padding: 8px 0; color: #6B7280; font-size: 14px; width: 140px;">
+                                        <strong>Nom complet :</strong>
+                                    </td>
+                                    <td style="padding: 8px 0; color: #1F2937; font-size: 14px;">
+                                        {{contact_fullname}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px 0; color: #6B7280; font-size: 14px;">
+                                        <strong>Fonction :</strong>
+                                    </td>
+                                    <td style="padding: 8px 0; color: #1F2937; font-size: 14px;">
+                                        {{contact_function}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px 0; color: #6B7280; font-size: 14px;">
+                                        <strong>Email :</strong>
+                                    </td>
+                                    <td style="padding: 8px 0;">
+                                        <a href="mailto:{{contact_email}}" style="color: {{primary_color}}; text-decoration: none; font-size: 14px;">
+                                            {{contact_email}}
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px 0; color: #6B7280; font-size: 14px;">
+                                        <strong>Tél. portable :</strong>
+                                    </td>
+                                    <td style="padding: 8px 0; color: #1F2937; font-size: 14px;">
+                                        {{contact_phone_mobile}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px 0; color: #6B7280; font-size: 14px;">
+                                        <strong>Tél. fixe :</strong>
+                                    </td>
+                                    <td style="padding: 8px 0; color: #1F2937; font-size: 14px;">
+                                        {{contact_phone_fixed}}
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Participants -->
+                            {{#if participant_list}}
+                            <div style="margin-bottom: 20px;">
+                                <h3 style="margin: 0 0 10px 0; color: #1F2937; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                                    <svg style="width: 20px; height: 20px;" fill="none" stroke="{{primary_color}}" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                    Participants
+                                </h3>
+                                <div style="background-color: {{primary_light}}; padding: 15px; border-radius: 6px; border-left: 3px solid {{primary_color}};">
+                                    <p style="margin: 0; color: {{primary_dark}}; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">{{participant_list}}</p>
+                                </div>
+                            </div>
+                            {{/if}}
+                            
+                            <!-- Message -->
+                            {{#if message}}
+                            <div style="margin-top: 25px;">
+                                <h3 style="margin: 0 0 10px 0; color: #1F2937; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                                    <svg style="width: 20px; height: 20px;" fill="none" stroke="{{primary_color}}" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                    </svg>
+                                    Message
+                                </h3>
+                                <div style="background-color: #F9FAFB; padding: 15px; border-radius: 6px; border: 1px solid #E5E7EB;">
+                                    <p style="margin: 0; color: #374151; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">{{message}}</p>
+                                </div>
+                            </div>
+                            {{/if}}
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #F9FAFB; padding: 20px; text-align: center; border-radius: 0 0 8px 8px; border-top: 1px solid #E5E7EB;">
+                            <p style="margin: 0; color: #6B7280; font-size: 12px;">
+                                Email envoyé automatiquement depuis le formulaire de préinscription
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Données clients (gérées par le CRM/SFTP)
+web/
+qualiopi/
+
+# FTP sync state
+.ftp-deploy-sync-state.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp

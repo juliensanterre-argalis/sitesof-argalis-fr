@@ -1,0 +1,16 @@
+{
+  "name": "argalis/page-produit-client",
+  "description": "Page produit client Argalis avec formulaires de contact",
+  "type": "project",
+  "require": {
+    "php": ">=7.4",
+    "ext-mbstring": "*",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "config": {
+    "platform": {
+      "php": "8.1"
+    }
+  }
+}
