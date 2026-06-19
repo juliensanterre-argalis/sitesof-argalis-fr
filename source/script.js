@@ -1415,7 +1415,7 @@ function showDemoBanner(type) {
         Site de démonstration - Produits et sessions fictifs
       </p>
       <p style="margin: 0.25rem 0 0 0; font-size: 0.875rem; opacity: 0.9;">
-        Passez au plan <a href="https://www.argalis.fr/tarifs.html" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: white; text-decoration: underline;">Business</a> pour accéder à l'intégralité du catalogue
+        Passez au plan <a href="https://www.argalis.fr/tarifs.html" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: white; text-decoration: underline;">Boost</a> ou <a href="https://www.argalis.fr/tarifs.html" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: white; text-decoration: underline;">Business</a> pour accéder à l'intégralité du catalogue
       </p>
       <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; opacity: 0.85;">
         Rendez-vous dans votre espace Argalis > Administration > Mon abonnement afin de migrer vers ce plan
@@ -1428,7 +1428,7 @@ function showDemoBanner(type) {
         Site de démonstration - Limité à 1 produit et 1 session
       </p>
       <p style="margin: 0.25rem 0 0 0; font-size: 0.875rem; opacity: 0.9;">
-        Passez au plan <a href="https://www.argalis.fr/tarifs.html" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: white; text-decoration: underline;">Business</a> pour accéder à l'intégralité du catalogue
+        Passez au plan <a href="https://www.argalis.fr/tarifs.html" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: white; text-decoration: underline;">Boost</a> ou <a href="https://www.argalis.fr/tarifs.html" target="_blank" rel="noopener noreferrer" style="font-weight: 700; color: white; text-decoration: underline;">Business</a> pour accéder à l'intégralité du catalogue
       </p>
       <p style="margin: 0.5rem 0 0 0; font-size: 0.8rem; opacity: 0.85;">
         Rendez-vous dans votre espace Argalis > Administration > Mon abonnement afin de migrer vers ce plan
