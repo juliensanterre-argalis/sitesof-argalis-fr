@@ -684,9 +684,94 @@ function initFormListeners() {
   });
 }
 
+// Vérifie si le client a désactivé son catalogue en ligne (fichier exit.json)
+// Retourne true si la page d'arrêt a été affichée (dans ce cas, on stoppe l'init normale)
+async function checkExitStatus() {
+  let exitData = null;
+  try {
+    const exitResponse = await fetch('./exit.json', { cache: 'no-store' });
+    if (!exitResponse.ok) return false;
+    exitData = await exitResponse.json();
+  } catch (e) {
+    return false;
+  }
+
+  if (!exitData || exitData.active !== true) return false;
+
+  // On récupère le nom/logo du client pour personnaliser la page, sans bloquer si absent
+  let clientName = 'ce client';
+  let clientLogo = '';
+  try {
+    const organismResponse = await fetch('./organism.json');
+    const data = await organismResponse.json();
+    clientName = data?.nomOrganisme || clientName;
+    clientLogo = data?.logoUrl || '';
+  } catch (e) {
+    // organism.json indisponible : on garde les valeurs par défaut
+  }
+
+  renderExitPage({
+    clientName,
+    clientLogo,
+    newUrl: exitData.newUrl || ''
+  });
+
+  return true;
+}
+
+// Affiche la page "catalogue non utilisé" aux couleurs Argalis
+function renderExitPage({ clientName, clientLogo, newUrl }) {
+  document.title = 'Page indisponible';
+
+  document.body.innerHTML = `
+    <div style="min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#fff 0%,#fef2f2 100%); padding:24px;">
+      <div style="max-width:560px; width:100%; background:#fff; border:1px solid #f1d4d4; border-radius:16px; box-shadow:0 10px 40px rgba(0,0,0,0.06); padding:48px 40px; text-align:center;">
+
+        <div style="display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap; margin-bottom:32px;">
+          ${clientLogo ? `<img src="${clientLogo}" alt="Logo ${escapeHtml(clientName)}" style="height:56px; max-width:180px; object-fit:contain;">` : ''}
+          ${clientLogo ? `<span style="color:#d1d5db; font-size:24px;">×</span>` : ''}
+          <img src="https://argalis-documents.s3-eu-central-1.amazonaws.com/document/argalis_argalis/image/dLXOrulGglDSyWssHwdEA1Rh.png" alt="Argalis" style="height:40px; max-width:160px; object-fit:contain;">
+        </div>
+
+        <div style="width:48px; height:48px; margin:0 auto 20px; border-radius:50%; background:#fee2e2; display:flex; align-items:center; justify-content:center;">
+          <span style="color:#e1062b; font-size:24px; font-weight:700;">!</span>
+        </div>
+
+        <h1 style="font-size:20px; font-weight:700; color:#111827; margin:0 0 12px;">Ce catalogue de formations n'est plus utilisé</h1>
+
+        <p style="color:#4b5563; font-size:15px; line-height:1.6; margin:0 0 28px;">
+          <strong>${escapeHtml(clientName)}</strong> n'utilise plus cette page de catalogue en ligne.
+          ${newUrl ? "Vous êtes invité(e) à vous rendre sur le nouveau site de l'organisme :" : "Merci de contacter directement l'organisme pour obtenir ses informations à jour."}
+        </p>
+
+        ${newUrl ? `
+        <a href="${escapeHtml(newUrl)}" target="_blank" rel="noopener noreferrer"
+           style="display:inline-block; background:#e1062b; color:#fff; font-weight:600; font-size:15px; padding:12px 28px; border-radius:8px; text-decoration:none;">
+          Accéder au nouveau site
+        </a>
+        ` : ''}
+
+        <p style="margin-top:36px; font-size:12px; color:#9ca3af;">
+          Catalogue propulsé par <a href="https://argalis.fr" target="_blank" rel="noopener noreferrer" style="color:#e1062b; text-decoration:none; font-weight:600;">Argalis</a>
+        </p>
+      </div>
+    </div>
+  `;
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
+
 // Initialisation de l'application
 async function init() {
   try {
+    // 0. Vérifier si le client a demandé l'arrêt du catalogue en ligne
+    const isExited = await checkExitStatus();
+    if (isExited) return;
+
     // 1. Charger les données en premier
     await loadData();
     
