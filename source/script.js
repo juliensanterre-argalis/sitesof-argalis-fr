@@ -724,8 +724,8 @@ function renderExitPage({ clientName, clientLogo, newUrl }) {
   document.title = 'Page indisponible';
 
   document.body.innerHTML = `
-    <div style="min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#fff 0%,#fef2f2 100%); padding:24px;">
-      <div style="max-width:560px; width:100%; background:#fff; border:1px solid #f1d4d4; border-radius:16px; box-shadow:0 10px 40px rgba(0,0,0,0.06); padding:48px 40px; text-align:center;">
+    <div style="min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#fff 0%,#e6f2f1 100%); padding:24px;">
+      <div style="max-width:560px; width:100%; background:#fff; border:1px solid #cfe6e3; border-radius:16px; box-shadow:0 10px 40px rgba(0,0,0,0.06); padding:48px 40px; text-align:center;">
 
         <div style="display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap; margin-bottom:32px;">
           ${clientLogo ? `<img src="${clientLogo}" alt="Logo ${escapeHtml(clientName)}" style="height:56px; max-width:180px; object-fit:contain;">` : ''}
@@ -733,8 +733,8 @@ function renderExitPage({ clientName, clientLogo, newUrl }) {
           <img src="https://argalis-documents.s3-eu-central-1.amazonaws.com/document/argalis_argalis/image/dLXOrulGglDSyWssHwdEA1Rh.png" alt="Argalis" style="height:40px; max-width:160px; object-fit:contain;">
         </div>
 
-        <div style="width:48px; height:48px; margin:0 auto 20px; border-radius:50%; background:#fee2e2; display:flex; align-items:center; justify-content:center;">
-          <span style="color:#e1062b; font-size:24px; font-weight:700;">!</span>
+        <div style="width:48px; height:48px; margin:0 auto 20px; border-radius:50%; background:#d9ebe9; display:flex; align-items:center; justify-content:center;">
+          <span style="color:#006a63; font-size:24px; font-weight:700;">!</span>
         </div>
 
         <h1 style="font-size:20px; font-weight:700; color:#111827; margin:0 0 12px;">Ce catalogue de formations n'est plus utilisé</h1>
@@ -746,13 +746,13 @@ function renderExitPage({ clientName, clientLogo, newUrl }) {
 
         ${newUrl ? `
         <a href="${escapeHtml(newUrl)}" target="_blank" rel="noopener noreferrer"
-           style="display:inline-block; background:#e1062b; color:#fff; font-weight:600; font-size:15px; padding:12px 28px; border-radius:8px; text-decoration:none;">
+           style="display:inline-block; background:#006a63; color:#fff; font-weight:600; font-size:15px; padding:12px 28px; border-radius:8px; text-decoration:none;">
           Accéder au nouveau site
         </a>
         ` : ''}
 
         <p style="margin-top:36px; font-size:12px; color:#9ca3af;">
-          Catalogue propulsé par <a href="https://argalis.fr" target="_blank" rel="noopener noreferrer" style="color:#e1062b; text-decoration:none; font-weight:600;">Argalis</a>
+          Catalogue propulsé par <a href="https://argalis.fr" target="_blank" rel="noopener noreferrer" style="color:#006a63; text-decoration:none; font-weight:600;">Argalis</a>
         </p>
       </div>
     </div>
