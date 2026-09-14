@@ -1031,6 +1031,7 @@ function filterAndMapSessions(rawSessions, formations) {
     return {
       reference: cleanValue(session.reference, 'N/A'),
       code_produit: cleanValue(session.code_produit, 'N/A'),
+      reference_produit: cleanValue(session.referenceproduit, null),
       libelle_produit: cleanValue(session.libelleproduit, 'Formation'),
       statut: cleanValue(session.statut, 'PRÉVISIONNEL'),
       date_debut: session.j1,
@@ -2709,8 +2710,11 @@ function clearSearch() {
 function createProchainessessionsCard(formation) {
   // Filtrer les sessions pour ce produit
   // Utiliser code_produit s'il existe, sinon utiliser reference (pour compatibilité)
+  // Priorité à la référence PRO- (unique) : plusieurs produits peuvent partager le même code_produit
   const sessionsForProduct = sessionsData.filter(session => 
-    session.code_produit === (formation.code_produit || formation.reference)
+    session.reference_produit
+      ? session.reference_produit === formation.reference
+      : session.code_produit === (formation.code_produit || formation.reference)
   );
   
   // Filtrer les sessions futures et les trier par date
@@ -3272,7 +3276,7 @@ function renderSessionsList() {
 // Créer une carte de session (format allongé)
 function createSessionCard(session) {
   // Récupérer la formation associée pour les tarifs
-  const formation = formationsData.find(f => f.code_produit === session.code_produit);
+  const formation = findFormationForSession(session);
   
   // Formater la date de début avec majuscule au jour
   const date = new Date(session.date_debut);
@@ -3414,7 +3418,7 @@ function createSessionCard(session) {
           <button 
             class="btn btn-default" 
             style="flex: 2; padding: 0.875rem; font-weight: 600; height: 48px; display: flex; align-items: center; justify-content: center;"
-            onclick="event.stopPropagation(); openPreinscriptionModal('${session.libelle_produit.replace(/'/g, "\\'")}', '${dateFormatted}', '${lieu.replace(/'/g, "\\'")}', '${session.reference}', getProductReferenceFromCode('${session.code_produit}'))"
+            onclick="event.stopPropagation(); openPreinscriptionModal('${session.libelle_produit.replace(/'/g, "\\'")}', '${dateFormatted}', '${lieu.replace(/'/g, "\\'")}', '${session.reference}', '${session.reference_produit || getProductReferenceFromCode(session.code_produit)}')"
           >
             <svg style="width: 1.25rem; height: 1.25rem; margin-right: 0.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
@@ -3452,7 +3456,7 @@ function showSessionDetail(sessionReference) {
   // Trouver la formation correspondante
   // session.code_produit contient le code produit (ex: "SST-I")
   // formation.reference contient aussi le code produit (ex: "SST-I")
-  let formation = formationsData.find(f => f.reference === session.code_produit);
+  let formation = findFormationForSession(session);
   
   // Si pas trouvé par reference, essayer par le nom exact
   if (!formation && session.libelle_produit) {
@@ -3779,7 +3783,7 @@ function renderSessionDetail(session, formation) {
             <!-- Bouton CTA -->
             <div style="display: flex; align-items: center; justify-content: center; min-width: 250px;">
               <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-                <button onclick="openPreinscriptionFromSession('${session.reference.replace(/'/g, "\\'")}','${session.libelle_produit.replace(/'/g, "\\'")}', '${sessionDateComplete.replace(/'/g, "\\'")}','${lieu.replace(/'/g, "\\'")}', getProductReferenceFromCode('${session.code_produit}'))" style="
+                <button onclick="openPreinscriptionFromSession('${session.reference.replace(/'/g, "\\'")}','${session.libelle_produit.replace(/'/g, "\\'")}', '${sessionDateComplete.replace(/'/g, "\\'")}','${lieu.replace(/'/g, "\\'")}', '${session.reference_produit || getProductReferenceFromCode(session.code_produit)}')" style="
                   padding: 1.5rem 2rem;
                   background: hsl(var(--primary));
                   color: white;
@@ -4479,6 +4483,15 @@ function closeContactModal() {
 // Ouvrir la préinscription depuis la page de détail de session
 function openPreinscriptionFromSession(sessionReference, formationName, sessionDate, sessionLieu, productReference = '') {
   openPreinscriptionModal(formationName, sessionDate, sessionLieu, sessionReference, productReference);
+}
+
+// Trouver la formation d'une session : référence PRO- d'abord (unique), puis code_produit
+// (plusieurs produits peuvent partager le même code_produit, ex. SST initial / MAC SST)
+function findFormationForSession(session) {
+  return (session.reference_produit && formationsData.find(f => f.reference === session.reference_produit))
+    || formationsData.find(f => f.reference === session.code_produit)
+    || formationsData.find(f => f.code_produit === session.code_produit)
+    || null;
 }
 
 // Trouver la référence PRO- d'une formation à partir de son code_produit
